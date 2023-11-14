@@ -4,7 +4,8 @@ class Ride
               :admission_fee,
               :excitement,
               :total_revenue,
-              :rider_log
+              :rider_log,
+              :total_times_ridden
 
   def initialize(hash)
     @name = hash[:name]
@@ -13,7 +14,7 @@ class Ride
     @excitement = hash[:excitement]
     @total_revenue = 0
     @rider_log = {}
-    @total_times_ridden
+    @total_times_ridden = 0
   end
 
   def board_rider(visitor)
