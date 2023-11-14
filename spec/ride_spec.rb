@@ -37,7 +37,7 @@ RSpec.describe Ride do
     end
 
     it 'adds them to @rider_log' do
-      expect(ride1.rider_log).to eq ({visitor1 => 8, visitor2 => 4})
+      expect(ride1.rider_log).to eq ({visitor1 => 2, visitor2 => 1})
     end
 
     it 'can take a Visitors spending money for the ride' do
@@ -54,7 +54,7 @@ RSpec.describe Ride do
       expect(ride1.total_times_ridden).to eq 3
 
       ride1.board_rider(visitor2)
-      
+
       expect(ride1.total_times_ridden).to eq 4
     end
   end

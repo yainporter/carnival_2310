@@ -45,4 +45,11 @@ RSpec.describe Visitor do
     expect(visitor1.spend_money(3)).to eq 7
     expect(visitor2.spend_money(4)).to eq 1
   end
+
+  it 'has @rider_tracker to keep track of how many times they rode a ride' do
+    visitor1 = Visitor.new('Bruce', 54, '$10')
+
+    expect(visitor1.ride_tracker).to be_a Hash
+    expect(visitor1.ride_tracker).to eq ({})
+  end
 end

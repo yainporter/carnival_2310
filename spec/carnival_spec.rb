@@ -91,12 +91,12 @@ RSpec.describe Carnival do
       visitors: [
       {
         visitor: visitor1,
-        favorite_ride: Ride1,
+        favorite_ride: ride1,
         total_money_spent: 3
       },
       {
         visitor: visitor2,
-        favorite_ride: Ride1,
+        favorite_ride: ride1,
         total_money_spent: 2
       }],
       rides: [

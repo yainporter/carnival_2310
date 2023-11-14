@@ -27,4 +27,27 @@ class Carnival
     end
     total_revenue
   end
+
+  def summary
+    summary = {}
+    summary[:visitor_count] = visitor_count
+    summary[:total_revenue] = total_revenue
+    # summary[:visitors] =
+  end
+
+  def visitor_count
+    @rides.count{|ride| ride.visitors}
+  end
+
+  # def visitors
+  #   visitors = []
+  #   visitor_hash = {}
+  #   @rides.each do |ride|
+  #     ride.rider_log.each do |visitor|
+  #       visitor_hash[:visitor] = visitor
+  #       visitor_hash[:favorite_ride] = visitor.
+  #       visitor_hash[:total_money_spent] =
+  #     end
+  #   end
+  # end
 end

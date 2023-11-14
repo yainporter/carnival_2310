@@ -18,8 +18,13 @@ class Ride
   end
 
   def board_rider(visitor)
-    @total_times_ridden += 1
-    @total_revenue += @admission_fee
-    @rider_log.store(visitor, visitor.spend_money(@admission_fee))
+    if visitor.preferences.include?(@excitement) && visitor.height >= @min_height && visitor.spending_money >= @admission_fee - visitor.spending_money
+      @total_times_ridden += 1
+      @total_revenue += @admission_fee
+      @rider_log.store(visitor, visitor.track_ride(@name))
+      visitor.spend_money(@admission_fee)
+    else
+      "ERROR"
+    end
   end
 end
