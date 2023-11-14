@@ -37,4 +37,12 @@ RSpec.describe Visitor do
     expect(visitor3.tall_enough?(54)).to eq(true)
     expect(visitor1.tall_enough?(64)).to eq(false)
   end
+
+  it 'can spend_money' do
+    visitor1 = Visitor.new('Bruce', 54, '$10')
+    visitor2 = Visitor.new('Tucker', 36, '$5')
+
+    expect(visitor1.spend_money(3)).to eq 7
+    expect(visitor2.spend_money(4)).to eq 1
+  end
 end

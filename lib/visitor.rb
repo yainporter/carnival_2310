@@ -18,4 +18,8 @@ class Visitor
   def tall_enough?(height)
     @height >= height
   end
+
+  def spend_money(cost)
+    @spending_money -= cost
+  end
 end
