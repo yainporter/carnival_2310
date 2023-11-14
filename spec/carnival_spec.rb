@@ -84,35 +84,37 @@ RSpec.describe Carnival do
     ride1.board_rider(visitor2)
     ride1.board_rider(visitor1)
     ride2.board_rider(visitor1)
+    ride2.board_rider(visitor1)
 
     expected = {
       visitor_count: 2,
-      revenue_earned: 5,
+      revenue_earned: 7,
       visitors: [
-      {
-        visitor: visitor1,
-        favorite_ride: ride1,
-        total_money_spent: 3
-      },
       {
         visitor: visitor2,
         favorite_ride: ride1,
         total_money_spent: 2
+      },
+      {
+        visitor: visitor1,
+        favorite_ride: ride2,
+        total_money_spent: 5
       }],
       rides: [
         {
           ride: ride1,
-          riders: [visitor1, visitor2],
+          riders: [visitor2, visitor1],
           total_revenue: 3
         },
         {
           ride: ride2,
           riders: [visitor1],
-          total_revenue: 2
+          total_revenue: 4
         }]
     }
 
     expect(carnival.summary).to be_a Hash
+    ####### Why doesn't this work?#######
     expect(carnival.summary).to eq (expected)
   end
 

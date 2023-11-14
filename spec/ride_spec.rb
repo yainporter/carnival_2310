@@ -34,6 +34,7 @@ RSpec.describe Ride do
       expect(ride1.board_rider(visitor1)).to be_an Integer
       expect(ride1.board_rider(visitor2)).to eq 4
       expect(ride1.board_rider(visitor1)).to eq 8
+
     end
 
     it 'adds them to @rider_log' do

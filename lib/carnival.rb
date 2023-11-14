@@ -31,23 +31,41 @@ class Carnival
   def summary
     summary = {}
     summary[:visitor_count] = visitor_count
-    summary[:total_revenue] = total_revenue
-    # summary[:visitors] =
+    summary[:revenue_earned] = total_revenue
+    summary[:visitors] = visitors_array_hash
+    summary[:rides] = rides_array_hash
+require 'pry'; binding.pry
+    summary
   end
 
   def visitor_count
-    @rides.count{|ride| ride.visitors}
+    @rides.count{|ride| ride.rider_log.keys}
   end
 
-  # def visitors
-  #   visitors = []
-  #   visitor_hash = {}
-  #   @rides.each do |ride|
-  #     ride.rider_log.each do |visitor|
-  #       visitor_hash[:visitor] = visitor
-  #       visitor_hash[:favorite_ride] = visitor.
-  #       visitor_hash[:total_money_spent] =
-  #     end
-  #   end
-  # end
+  def visitors_array_hash
+    visitors = []
+    @rides.each do |ride|
+        ride.rider_log.keys.each do |visitor|
+          visitor_hash = {}
+          visitor_hash[:visitor] = visitor
+          visitor_hash[:favorite_ride] = @rides.select{|ride| ride.name.include?(visitor.favorite_ride)}
+          visitor_hash[:total_money_spent] = visitor.money_spent
+          visitors << visitor_hash
+        end
+        break
+    end
+    visitors
+  end
+
+  def rides_array_hash
+    rides = []
+    @rides.each do |ride|
+      rides_hash = {}
+      rides_hash[:ride] = ride
+      rides_hash[:riders] = ride.rider_log.keys
+      rides_hash[:total_revenue] = ride.total_revenue
+      rides << rides_hash
+    end
+    rides
+  end
 end

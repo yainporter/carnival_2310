@@ -52,4 +52,25 @@ RSpec.describe Visitor do
     expect(visitor1.ride_tracker).to be_a Hash
     expect(visitor1.ride_tracker).to eq ({})
   end
+
+  it 'can tell which ride is the Visitors favorite' do
+    visitor1 = Visitor.new('Bruce', 54, '$10')
+
+    # ### STUB AND MOCK HERE
+    # @ride_tracker = {"Carousel" => 1, "Ferris Wheel" => 3}
+
+    # expect(visitor1.favorite_ride).to be_a String
+
+  end
+
+  it 'can keep track of how much money was spent' do
+    visitor1 = Visitor.new('Bruce', 54, '$10')
+
+    expect(visitor1.money_spent).to be_an Integer
+    expect(visitor1.money_spent).to eq 0
+
+    visitor1.spend_money(5)
+
+    expect(visitor1.money_spent).to eq 5
+  end
 end
