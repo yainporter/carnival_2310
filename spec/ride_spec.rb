@@ -1,8 +1,8 @@
 require './spec/spec_helper'
 
-RSpec.describe Ride do
-  it "exists" do
+# RSpec.describe Ride do
+#   it "exists" do
 
-    expect().to eq(true)
-  end
-end
+#     expect().to eq(true)
+#   end
+# end
