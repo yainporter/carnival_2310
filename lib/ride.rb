@@ -13,9 +13,11 @@ class Ride
     @excitement = hash[:excitement]
     @total_revenue = 0
     @rider_log = {}
+    @total_times_ridden
   end
 
   def board_rider(visitor)
+    @total_times_ridden += 1
     @total_revenue += @admission_fee
     @rider_log.store(visitor, visitor.spend_money(@admission_fee))
   end
