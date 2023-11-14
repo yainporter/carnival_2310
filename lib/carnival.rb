@@ -34,7 +34,6 @@ class Carnival
     summary[:revenue_earned] = total_revenue
     summary[:visitors] = visitors_array_hash
     summary[:rides] = rides_array_hash
-require 'pry'; binding.pry
     summary
   end
 
@@ -48,7 +47,7 @@ require 'pry'; binding.pry
         ride.rider_log.keys.each do |visitor|
           visitor_hash = {}
           visitor_hash[:visitor] = visitor
-          visitor_hash[:favorite_ride] = @rides.select{|ride| ride.name.include?(visitor.favorite_ride)}
+          visitor_hash[:favorite_ride] = @rides.select{|ride| ride.name.include?(visitor.favorite_ride)}.pop
           visitor_hash[:total_money_spent] = visitor.money_spent
           visitors << visitor_hash
         end

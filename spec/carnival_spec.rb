@@ -114,7 +114,43 @@ RSpec.describe Carnival do
     }
 
     expect(carnival.summary).to be_a Hash
+    expect(carnival.summary[:visitor_count]).to be_an Integer
+    expect(carnival.summary[:revenue_earned]).to be_an Integer
+    expect(carnival.summary[:visitors]).to be_an Array
+    expect(carnival.summary[:visitors].first).to be_a Hash
+    expect(carnival.summary[:visitors].first[:visitor]).to be_a Visitor
+    expect(carnival.summary[:visitors].first[:favorite_ride]).to be_a Ride
+    ##### CHANGE RIDE TO AN OBJECT, NOT ARRAY!!########
+    expect(carnival.summary[:visitors].first[:total_money_spent]).to be_an Integer
+
     ####### Why doesn't this work?#######
+    expect(carnival.summary[:visitors].first).to eq ({
+      visitor: visitor2,
+      favorite_ride: ride1,
+      total_money_spent: 2
+    })
+    expect(carnival.summary[:visitors]).to eq [
+      {
+        visitor: visitor2,
+        favorite_ride: ride1,
+        total_money_spent: 2
+      },
+      {
+        visitor: visitor1,
+        favorite_ride: ride2,
+        total_money_spent: 5
+      }]
+    expect(carnival.summary[:rides]).to eq [
+        {
+          ride: ride1,
+          riders: [visitor2, visitor1],
+          total_revenue: 3
+        },
+        {
+          ride: ride2,
+          riders: [visitor1],
+          total_revenue: 4
+        }]
     expect(carnival.summary).to eq (expected)
   end
 
