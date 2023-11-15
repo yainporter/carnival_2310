@@ -16,7 +16,7 @@ class Visitor
   end
 
   def add_preference(preference)
-    @preferences << preference
+    @preferences << preference if !@preferences.include?(preference)
   end
 
   def tall_enough?(height)

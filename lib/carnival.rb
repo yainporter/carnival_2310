@@ -9,7 +9,7 @@ class Carnival
   end
 
   def add_ride(ride)
-    @rides << ride
+    @rides << ride if !@rides.include?(ride)
   end
 
   def most_popular_ride
@@ -56,7 +56,7 @@ class Carnival
     @rides.select{|ride| ride.name.include?(visitor.favorite_ride)}.pop
   end
 
-  def rides_array_hash
+  def rides_array
     rides = []
     @rides.each do |ride|
       rides_hash = {}
