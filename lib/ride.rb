@@ -4,8 +4,7 @@ class Ride
               :admission_fee,
               :excitement,
               :total_revenue,
-              :rider_log,
-              :total_times_ridden
+              :rider_log
 
   def initialize(hash)
     @name = hash[:name]
@@ -17,12 +16,18 @@ class Ride
   end
 
   def board_rider(visitor)
-    if visitor.preferences.include?(@excitement) && visitor.height >= @min_height && visitor.spending_money >= @admission_fee - visitor.spending_money
+    if meets_ride_requirements?(visitor)
       @total_revenue += @admission_fee
       @rider_log.store(visitor, visitor.track_ride(@name))
       visitor.spend_money(@admission_fee)
     else
       "ERROR"
     end
+  end
+
+  def meets_ride_requirements?(visitor)
+    visitor.preferences.include?(@excitement) &&
+    visitor.tall_enough?(@min_height) &&
+    visitor.spending_money >= @admission_fee - visitor.spending_money
   end
 end

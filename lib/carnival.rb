@@ -28,7 +28,7 @@ class Carnival
     {
       visitor_count: visitor_count,
       revenue_earned: total_revenue,
-      visitors: visitors_array_hash,
+      visitors: visitors_array,
       rides: rides_array_hash
     }
   end
@@ -37,19 +37,23 @@ class Carnival
     @rides.count{|ride| ride.rider_log.keys}
   end
 
-  def visitors_array_hash
+  def visitors_array
     visitors = []
     @rides.each do |ride|
         ride.rider_log.keys.each do |visitor|
           visitor_hash = {}
           visitor_hash[:visitor] = visitor
-          visitor_hash[:favorite_ride] = @rides.select{|ride| ride.name.include?(visitor.favorite_ride)}.pop
+          visitor_hash[:favorite_ride] = favorite_ride(visitor)
           visitor_hash[:total_money_spent] = visitor.money_spent
           visitors << visitor_hash
         end
         break
     end
     visitors
+  end
+
+  def favorite_ride(visitor)
+    @rides.select{|ride| ride.name.include?(visitor.favorite_ride)}.pop
   end
 
   def rides_array_hash
