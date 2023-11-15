@@ -123,7 +123,7 @@ RSpec.describe Carnival do
     ##### CHANGE RIDE TO AN OBJECT, NOT ARRAY!!########
     expect(carnival.summary[:visitors].first[:total_money_spent]).to be_an Integer
 
-    ####### Why doesn't this work?#######
+    ####### Why doesn't this work? -- BECAISE #######
     expect(carnival.summary[:visitors].first).to eq ({
       visitor: visitor2,
       favorite_ride: ride1,

@@ -13,13 +13,11 @@ class Ride
     @admission_fee = hash[:admission_fee]
     @excitement = hash[:excitement]
     @total_revenue = 0
-    @rider_log = {}
-    @total_times_ridden = 0
+    @rider_log = Hash.new(0)
   end
 
   def board_rider(visitor)
     if visitor.preferences.include?(@excitement) && visitor.height >= @min_height && visitor.spending_money >= @admission_fee - visitor.spending_money
-      @total_times_ridden += 1
       @total_revenue += @admission_fee
       @rider_log.store(visitor, visitor.track_ride(@name))
       visitor.spend_money(@admission_fee)

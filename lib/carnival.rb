@@ -13,7 +13,7 @@ class Carnival
   end
 
   def most_popular_ride
-    @rides.max_by{|ride| ride.total_times_ridden}
+    @rides.max_by{|ride| ride.total_revenue/ride.admission_fee}
   end
 
   def most_profitable_ride
@@ -21,20 +21,16 @@ class Carnival
   end
 
   def total_revenue
-    total_revenue = 0
-    @rides.each do |ride|
-      total_revenue += ride.total_revenue
-    end
-    total_revenue
+    @rides.sum{|ride| ride.total_revenue}
   end
 
   def summary
-    summary = {}
-    summary[:visitor_count] = visitor_count
-    summary[:revenue_earned] = total_revenue
-    summary[:visitors] = visitors_array_hash
-    summary[:rides] = rides_array_hash
-    summary
+    {
+      visitor_count: visitor_count,
+      revenue_earned: total_revenue,
+      visitors: visitors_array_hash,
+      rides: rides_array_hash
+    }
   end
 
   def visitor_count

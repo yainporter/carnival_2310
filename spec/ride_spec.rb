@@ -49,14 +49,5 @@ RSpec.describe Ride do
     it 'can add to the total revenue after Visitors ride' do
       expect(ride1.total_revenue).to eq 3
     end
-
-    it 'can keep track of the number of times the Visitors have ridden' do
-      expect(ride1.total_times_ridden).to be_an Integer
-      expect(ride1.total_times_ridden).to eq 3
-
-      ride1.board_rider(visitor2)
-
-      expect(ride1.total_times_ridden).to eq 4
-    end
   end
 end
