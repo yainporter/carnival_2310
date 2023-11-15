@@ -29,7 +29,7 @@ class Carnival
       visitor_count: visitor_count,
       revenue_earned: total_revenue,
       visitors: visitors_array,
-      rides: rides_array_hash
+      rides: rides_array
     }
   end
 
